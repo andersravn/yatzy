@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		6AE007A6212F347E005EF98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007A5212F347E005EF98B /* AppDelegate.swift */; };
-		6AE007A8212F347E005EF98B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007A7212F347E005EF98B /* ViewController.swift */; };
+		6AE007A8212F347E005EF98B /* NumberOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007A7212F347E005EF98B /* NumberOfPlayersViewController.swift */; };
 		6AE007AB212F347E005EF98B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AE007A9212F347E005EF98B /* Main.storyboard */; };
 		6AE007AD212F347F005EF98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AE007AC212F347F005EF98B /* Assets.xcassets */; };
 		6AE007B0212F347F005EF98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AE007AE212F347F005EF98B /* LaunchScreen.storyboard */; };
+		6AE007B8212F4395005EF98B /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007B7212F4395005EF98B /* PlayersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6AE007A2212F347E005EF98B /* Super Yahtzee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Yahtzee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE007A5212F347E005EF98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6AE007A7212F347E005EF98B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6AE007A7212F347E005EF98B /* NumberOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPlayersViewController.swift; sourceTree = "<group>"; };
 		6AE007AA212F347E005EF98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AE007AC212F347F005EF98B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AE007AF212F347F005EF98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AE007B1212F347F005EF98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AE007B7212F4395005EF98B /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +57,12 @@
 			isa = PBXGroup;
 			children = (
 				6AE007A5212F347E005EF98B /* AppDelegate.swift */,
-				6AE007A7212F347E005EF98B /* ViewController.swift */,
+				6AE007A7212F347E005EF98B /* NumberOfPlayersViewController.swift */,
 				6AE007A9212F347E005EF98B /* Main.storyboard */,
 				6AE007AC212F347F005EF98B /* Assets.xcassets */,
 				6AE007AE212F347F005EF98B /* LaunchScreen.storyboard */,
 				6AE007B1212F347F005EF98B /* Info.plist */,
+				6AE007B7212F4395005EF98B /* PlayersViewController.swift */,
 			);
 			path = "Super Yahtzee";
 			sourceTree = "<group>";
@@ -135,8 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AE007A8212F347E005EF98B /* ViewController.swift in Sources */,
+				6AE007A8212F347E005EF98B /* NumberOfPlayersViewController.swift in Sources */,
 				6AE007A6212F347E005EF98B /* AppDelegate.swift in Sources */,
+				6AE007B8212F4395005EF98B /* PlayersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
