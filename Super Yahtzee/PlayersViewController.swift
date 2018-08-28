@@ -11,7 +11,9 @@ import UIKit
 
 class PlayersViewController: UIViewController {
     @IBOutlet weak var playersInputContainer: UIStackView!
+    
     var numberOfPlayers: Int!
+    var playerNameTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class PlayersViewController: UIViewController {
         while i < self.numberOfPlayers {
             let textField = createTextField(playerNumber: i)
             playersInputContainer.insertArrangedSubview(textField, at: i)
+            playerNameTextFields.append(textField)
             i += 1
         }
     }
@@ -33,5 +36,22 @@ class PlayersViewController: UIViewController {
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.keyboardType = UIKeyboardType.default
         return textField
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createGame" {
+            let controller = segue.destination as! GameViewController
+            controller.playerNames = self.getContentFromTextFields(textFields: playerNameTextFields)
+        }
+    }
+    
+    func getContentFromTextFields(textFields: [UITextField]) -> [String] {
+        var result: [String] = []
+        for field in textFields {
+            if let text = field.text {
+                result.append(text)
+            }
+        }
+        return result
     }
 }
