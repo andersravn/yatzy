@@ -18,6 +18,8 @@ class PlayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.hideKeyboardWhenTappedAround()
+        
         print("Players: \(self.numberOfPlayers!)")
         var i = 0
         while i < self.numberOfPlayers {

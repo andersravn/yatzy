@@ -1,0 +1,6 @@
+framework module Pods_Super_Yahtzee {
+  umbrella header "Pods-Super Yahtzee-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -58,7 +58,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj6-df-QFN">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
@@ -110,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="stackView" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
+                            <stackView opaque="NO" contentMode="top" restorationIdentifier="stackView" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
                                 <rect key="frame" x="40" y="188" width="295" height="424"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-Bs-yEd">
@@ -125,7 +125,7 @@
                                 </state>
                                 <connections>
                                     <action selector="continueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J31-cd-4wA"/>
-                                    <segue destination="eUN-tT-RAM" kind="show" identifier="createGame" id="3Ga-tR-x40"/>
+                                    <segue destination="QGo-c8-usw" kind="show" identifier="createGame" id="ZTh-wG-MM2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add player names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRx-ut-MPO">
@@ -137,13 +137,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="top" secondItem="oRx-ut-MPO" secondAttribute="bottom" constant="27" id="9Vc-Hv-agK"/>
+                            <constraint firstItem="Cch-Bs-yEd" firstAttribute="top" secondItem="N6i-Ap-zUH" secondAttribute="bottom" id="7Yc-MM-jW6"/>
                             <constraint firstItem="XJN-zD-U3v" firstAttribute="bottom" secondItem="Cch-Bs-yEd" secondAttribute="bottom" id="NYt-ey-hkX"/>
-                            <constraint firstItem="oRx-ut-MPO" firstAttribute="centerX" secondItem="XJN-zD-U3v" secondAttribute="centerX" id="PzV-d8-BfE"/>
                             <constraint firstItem="Cch-Bs-yEd" firstAttribute="leading" secondItem="XJN-zD-U3v" secondAttribute="leading" id="R5t-Hf-Thl"/>
                             <constraint firstItem="oRx-ut-MPO" firstAttribute="top" secondItem="XJN-zD-U3v" secondAttribute="top" constant="59" id="ULA-WB-zrw"/>
                             <constraint firstItem="XJN-zD-U3v" firstAttribute="trailing" secondItem="Cch-Bs-yEd" secondAttribute="trailing" id="X0Q-Sn-CTR"/>
                             <constraint firstItem="XJN-zD-U3v" firstAttribute="trailing" secondItem="N6i-Ap-zUH" secondAttribute="trailing" constant="40" id="X5P-PX-BmK"/>
+                            <constraint firstItem="oRx-ut-MPO" firstAttribute="centerX" secondItem="XJN-zD-U3v" secondAttribute="centerX" id="hhP-gd-qpv"/>
+                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="top" secondItem="oRx-ut-MPO" secondAttribute="bottom" constant="44" id="tNx-ec-BZM"/>
                             <constraint firstItem="N6i-Ap-zUH" firstAttribute="leading" secondItem="XJN-zD-U3v" secondAttribute="leading" constant="40" id="ySA-FR-M69"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XJN-zD-U3v"/>
@@ -157,57 +158,24 @@
             </objects>
             <point key="canvasLocation" x="1710" y="83"/>
         </scene>
-        <!--Game View Controller-->
-        <scene sceneID="j27-O9-Oi5">
+        <!--Game-->
+        <scene sceneID="Fpe-Hv-7ll">
             <objects>
-                <collectionViewController id="eUN-tT-RAM" customClass="GameViewController" customModule="Super_Yahtzee" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yzz-3s-Umx">
+                <viewController id="QGo-c8-usw" customClass="GameViewController" customModule="Super_Yahtzee" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CoR-VC-5e5" customClass="SpreadsheetView" customModule="SpreadsheetView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lv9-ks-pOK">
-                            <size key="itemSize" width="40" height="20"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCell" id="RCO-Qz-Jh1" customClass="CustomCollectionViewCell" customModule="Super_Yahtzee" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKe-xk-LRY">
-                                            <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
-                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="qKe-xk-LRY" firstAttribute="leading" secondItem="RCO-Qz-Jh1" secondAttribute="leading" id="3zO-dt-WBf"/>
-                                    <constraint firstAttribute="bottom" secondItem="qKe-xk-LRY" secondAttribute="bottom" id="JUc-I4-Fkc"/>
-                                    <constraint firstItem="qKe-xk-LRY" firstAttribute="top" secondItem="RCO-Qz-Jh1" secondAttribute="top" id="Vz0-xp-Geq"/>
-                                    <constraint firstAttribute="trailing" secondItem="qKe-xk-LRY" secondAttribute="trailing" id="jbJ-TF-ErP"/>
-                                </constraints>
-                                <size key="customSize" width="40" height="20"/>
-                                <connections>
-                                    <outlet property="label" destination="qKe-xk-LRY" id="rcK-cZ-RqW"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="eUN-tT-RAM" id="6hY-gd-rhQ"/>
-                            <outlet property="delegate" destination="eUN-tT-RAM" id="3e9-Eu-adL"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rzn-mz-uiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="j3l-qK-zdr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game" id="xQf-Hc-OhK"/>
+                    <connections>
+                        <outlet property="spreadsheetView" destination="CoR-VC-5e5" id="XMI-3x-wdC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKI-wg-Ncb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3288" y="84"/>
+            <point key="canvasLocation" x="2616.8000000000002" y="95.802098950524751"/>
         </scene>
     </scenes>
 </document>

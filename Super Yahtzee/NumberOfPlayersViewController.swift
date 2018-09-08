@@ -15,6 +15,9 @@ class NumberOfPlayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(self.didTapView))
+        self.view.addGestureRecognizer(tapRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +34,10 @@ class NumberOfPlayersViewController: UIViewController {
                 print("Not a valid Int.")
             }
         }
+    }
+    
+    @objc func didTapView(){
+        self.view.endEditing(true)
     }
 }
 
