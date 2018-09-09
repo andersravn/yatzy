@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A16067B2143DEED00A2546E /* HideKeyboardOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A16067A2143DEED00A2546E /* HideKeyboardOnTap.swift */; };
-		6A16067D2143EA5E00A2546E /* PlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A16067C2143EA5E00A2546E /* PlayCell.swift */; };
+		6A16067D2143EA5E00A2546E /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A16067C2143EA5E00A2546E /* Cells.swift */; };
 		6A16067F2143F31100A2546E /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A16067E2143F31100A2546E /* Substring.swift */; };
+		6A5D44242145395B009671CA /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D44232145395B009671CA /* Board.swift */; };
 		6AE007A6212F347E005EF98B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007A5212F347E005EF98B /* AppDelegate.swift */; };
 		6AE007A8212F347E005EF98B /* NumberOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE007A7212F347E005EF98B /* NumberOfPlayersViewController.swift */; };
 		6AE007AB212F347E005EF98B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AE007A9212F347E005EF98B /* Main.storyboard */; };
@@ -24,8 +25,9 @@
 		1CE7EB2E4229B3DC39E76F04 /* Pods_Super_Yahtzee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Super_Yahtzee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2839C3C37B0B97C8FB07D1F9 /* Pods-Super Yahtzee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Super Yahtzee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Super Yahtzee/Pods-Super Yahtzee.release.xcconfig"; sourceTree = "<group>"; };
 		6A16067A2143DEED00A2546E /* HideKeyboardOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTap.swift; sourceTree = "<group>"; };
-		6A16067C2143EA5E00A2546E /* PlayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCell.swift; sourceTree = "<group>"; };
+		6A16067C2143EA5E00A2546E /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		6A16067E2143F31100A2546E /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		6A5D44232145395B009671CA /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		6AE007A2212F347E005EF98B /* Super Yahtzee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Yahtzee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE007A5212F347E005EF98B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AE007A7212F347E005EF98B /* NumberOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfPlayersViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +91,8 @@
 				6AE007B1212F347F005EF98B /* Info.plist */,
 				6AE007B7212F4395005EF98B /* PlayersViewController.swift */,
 				6AEA457221332E970029D927 /* GameViewController.swift */,
-				6A16067C2143EA5E00A2546E /* PlayCell.swift */,
+				6A5D44232145395B009671CA /* Board.swift */,
+				6A16067C2143EA5E00A2546E /* Cells.swift */,
 			);
 			path = "Super Yahtzee";
 			sourceTree = "<group>";
@@ -224,11 +227,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A16067B2143DEED00A2546E /* HideKeyboardOnTap.swift in Sources */,
-				6A16067D2143EA5E00A2546E /* PlayCell.swift in Sources */,
+				6A16067D2143EA5E00A2546E /* Cells.swift in Sources */,
 				6AEA457321332E970029D927 /* GameViewController.swift in Sources */,
 				6A16067F2143F31100A2546E /* Substring.swift in Sources */,
 				6AE007A8212F347E005EF98B /* NumberOfPlayersViewController.swift in Sources */,
 				6AE007A6212F347E005EF98B /* AppDelegate.swift in Sources */,
+				6A5D44242145395B009671CA /* Board.swift in Sources */,
 				6AE007B8212F4395005EF98B /* PlayersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

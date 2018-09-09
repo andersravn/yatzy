@@ -10,17 +10,34 @@ import Foundation
 import UIKit
 import SpreadsheetView
 
+struct Points {
+    var ones = 0
+    var twos = 0
+    var threes = 0
+    var fours = 0
+    var fives = 0
+    var sixes = 0
+    var sum = 0
+    var bonus = 0
+    var pairs1 = 0
+    var pairs2 = 0
+    var pairs3 = 0
+    var pairs4 = 0
+    var twoXThreeEqual = 0
+    var low = 0
+    var high = 0
+    var cameron = 0
+    var fullHouse = 0
+    var chance = 0
+    var total = 0
+}
+
 class GameViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     
-    var playerNames: [String]!
-    var topRow: [String]!
-    let sumPlays = ["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"]
-    let calcFields = ["Sum", "Bonus(>83)"]
-    let specialPlays = ["1 pair", "2 pairs", "3 pairs", "4 pairs", "2 x 3 equal", "1-2-3-4-5", "2-3-4-5-6", "1-2-3-4-5-6", "Full house", "Chance", "Super Yatzy"]
-    let total = "Total"
-    var counter = 0
+    var playerNames = ["Anders", "Natalie", "Sille", "Emil"]
+    var board: Board!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +45,11 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
         spreadsheetView.dataSource = self
         spreadsheetView.delegate = self
         
+        spreadsheetView.register(TopCell.self, forCellWithReuseIdentifier: String(describing: TopCell.self))
+        spreadsheetView.register(InfoCell.self, forCellWithReuseIdentifier: String(describing: InfoCell.self))
         spreadsheetView.register(PlayCell.self, forCellWithReuseIdentifier: String(describing: PlayCell.self))
         
-        print("Game started!")
-        for name in playerNames {
-            print(name)
-        }
-        topRow = ["", "Max"] + playerNames.map {$0.substring(to: 2)}
+        self.board = Board(playerNames: ["Anders", "Natalie", "Sille", "Emil"])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,15 +58,19 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
     }
     
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        return playerNames.count + 2
+        return self.board.topRow.count
     }
     
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return sumPlays.count
+        return self.board.getInfoColumn().count
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-        return 40
+        if case 0 = column {
+            return 80
+        } else {
+            return 40
+        }
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
@@ -59,14 +78,31 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
+        // First row
         if indexPath.row == 0 {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PlayCell.self), for: indexPath) as! PlayCell
-            cell.label.text = topRow[indexPath.column]
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TopCell.self), for: indexPath) as! TopCell
+            cell.label.text = self.board.topRow[indexPath.column]
+            if (indexPath.row % 2 != 0) {
+                cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
+            }
             return cell
         }
+        // First column
         if indexPath.column == 0 {
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: InfoCell.self), for: indexPath) as! InfoCell
+            cell.label.text = self.board.getInfoColumn()[indexPath.row - 1]
+            if (indexPath.row % 2 != 0) {
+                cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
+            }
+            return cell
+        }
+        
+        if (indexPath.column > 1 && indexPath.row > 0) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PlayCell.self), for: indexPath) as! PlayCell
-            cell.label.text = sumPlays[indexPath.row - 1]
+            cell.label.text = board.playCells[indexPath.column - 2][indexPath.row - 1]
+            if (indexPath.row % 2 != 0) {
+                cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
+            }
             return cell
         } else {
             return nil
