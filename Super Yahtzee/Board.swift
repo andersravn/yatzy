@@ -9,49 +9,110 @@
 import Foundation
 import UIKit
 
-class Board {
+class Board: NSObject, UITextFieldDelegate {
     var playerNames: [String]!
     var topRow: [String]!
+    var maxColumn: [String]!
     var sumPlays: [String]!
     var calcFields: [String]!
     var specialPlays: [String]!
     var total: [String]!
-    var playCells: [[UITextField]]! = [] // Totals to the number of players.
+    var playerColumns: [[UITextField]]! = [] // Totals to the number of players.
+    let sumCell = 6
+    let bonusCell = 7
+    let yatzyCell = 19
+    let totalCell = 20
     
     init(playerNames: [String]) {
+        super.init()
         self.playerNames = playerNames
         self.topRow = ["", "Max"] + self.playerNames.map {$0.substring(to: 2)}
+        self.maxColumn = ["6", "12", "18", "24", "30", "36", "126", "50", "12", "22", "30", "18", "24", "33", "15", "20", "30", "28", "36", "136"]
         self.sumPlays = ["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"]
         self.calcFields = ["Sum", "Bonus(>83)"]
-        self.specialPlays = ["1 pair", "2 pairs", "3 pairs", "4 pairs", "2 x 3 equal", "1-2-3-4-5", "2-3-4-5-6", "1-2-3-4-5-6", "Full house", "Chance", "Super Yatzy"]
+        self.specialPlays = ["1 pair", "2 pairs", "3 pairs", "3 of a kind", "4 of a kind", "2 x 3 equal", "1-2-3-4-5", "2-3-4-5-6", "1-2-3-4-5-6", "Full house", "Chance", "Super Yatzy"]
         self.total = ["Total"]
-        for _ in self.playerNames {
+        for (playerIndex, _) in self.playerNames.enumerated() {
             var playerCells: [UITextField]! = [] // Totals to the number of vertical cells.
-            for (index, _) in self.getInfoColumn().enumerated() {
-                if index == 6 || index == 7 || index == 19 {
-                    playerCells.append(createTextField(isUserInteractionEnabled: false))
+            for (playIndex, _) in self.getInfoColumn().enumerated() {
+                if playIndex == self.sumCell || playIndex == self.bonusCell || playIndex == self.totalCell {
+                    playerCells.append(createTextField(isUserInteractionEnabled: false, tag: playerIndex + playIndex))
                     continue
                 }
-                playerCells.append(createTextField(isUserInteractionEnabled: true))
+                playerCells.append(createTextField(isUserInteractionEnabled: true, tag: playerIndex + playIndex))
             }
-            playCells.append(playerCells)
+            print("COUNT")
+            print(playerCells.count)
+            playerColumns.append(playerCells)
         }
     }
     
     func getInfoColumn() -> [String] {
-        return [""] + self.sumPlays + self.calcFields + self.specialPlays + self.total
+        return self.sumPlays + self.calcFields + self.specialPlays + self.total
     }
     
-    func createTextField(isUserInteractionEnabled: Bool) -> UITextField {
+    func createTextField(isUserInteractionEnabled: Bool, tag: Int) -> UITextField {
         let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 40.00, height: 20.00))
-        // textField.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:1.0)
-        // textField.textColor = UIColor.white
-        // textField.placeholder = "Player \(playerNumber + 1)"
-        // textField.borderStyle = UITextBorderStyle.roundedRect
         textField.font = UIFont(name: (textField.font?.fontName)!, size: 10.0)
         textField.textAlignment = .center
         textField.keyboardType = UIKeyboardType.numberPad
         textField.isUserInteractionEnabled = isUserInteractionEnabled
+        textField.tag = tag
+        textField.delegate = self
         return textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        calculateTotal()
+    }
+    
+    func calculateTotal() -> Void {
+        for (index, _) in playerColumns.enumerated() {
+            calculateSumPlays(playerCells: playerColumns[index])
+            calculateBonus(playerCells: playerColumns[index])
+            calculatePlayerTotal(playerCells: playerColumns[index])
+            calculateYatzy(playerCells: playerColumns[index])
+        }
+    }
+    
+    func calculateSumPlays(playerCells: [UITextField]) -> Void {
+        var sum = 0
+        for (index, _) in sumPlays.enumerated() {
+            if let cell = Int(playerCells[index].text!) {
+                sum += cell
+            }
+        }
+        playerCells[self.sumCell].text = String(sum)
+    }
+    
+    func calculateBonus(playerCells: [UITextField]) -> Void {
+        if let sumCell = Int(playerCells[self.sumCell].text!) {
+            if (sumCell > 83) {
+                playerCells[self.bonusCell].text = "50"
+            } else {
+                playerCells[self.bonusCell].text = ""
+            }
+        }
+    }
+    
+    func calculatePlayerTotal(playerCells: [UITextField]) -> Void {
+        var total = 0
+        for index in sumPlays.count...playerCells.count - 1 {
+            if index == playerCells.count - 1 {
+                playerCells[index].text = String(total)
+            } else {
+                if let cell = Int(playerCells[index].text!) {
+                    total += cell
+                }
+            }
+        }
+    }
+    
+    func calculateYatzy(playerCells: [UITextField]) -> Void {
+        if let _ = Int(playerCells[self.yatzyCell].text!) {
+            let total = Int(playerCells[self.totalCell].text!)!
+            let newTotal = total + 100
+            playerCells[self.totalCell].text = String(newTotal)
+        }
     }
 }

@@ -40,7 +40,7 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
     }
     
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return self.board.getInfoColumn().count
+        return self.board.getInfoColumn().count + 1
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -65,20 +65,19 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
             }
             return cell
         }
-        // First column
-        if indexPath.column == 0 {
+        // First column - skips the empty cell in the first row.
+        if indexPath.column == 0 && indexPath.row > 0 {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: InfoCell.self), for: indexPath) as! InfoCell
-            cell.label.text = self.board.getInfoColumn()[indexPath.row]
+            cell.label.text = self.board.getInfoColumn()[indexPath.row - 1] // -1 to compensate for the empty cell in the first row.
             if (indexPath.row % 2 != 0) {
                 cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
             }
-            print(indexPath.row)
             return cell
         }
         
         if (indexPath.column > 1 && indexPath.row > 0) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PlayCell.self), for: indexPath) as! PlayCell
-            cell.addSubview(board.playCells[indexPath.column - 2][indexPath.row - 1])
+            cell.addSubview(board.playerColumns[indexPath.column - 2][indexPath.row - 1])
             if (indexPath.row % 2 != 0) {
                 cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
             }
