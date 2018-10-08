@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dug-o2-V9p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dug-o2-V9p">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="QGo-c8-usw" kind="relationship" relationship="rootViewController" id="2mb-AW-si3"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="E7E-k2-icG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjW-Lr-01f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -50,7 +50,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-oe-Mdl">
-                                <rect key="frame" x="142.5" y="298.5" width="90" height="90"/>
+                                <rect key="frame" x="142.5" y="320.5" width="90" height="90"/>
                                 <color key="backgroundColor" red="0.5725490196078431" green="0.80000000000000004" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="1SB-tO-4Pe"/>
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gd-6m-NwP">
-                                <rect key="frame" x="112.5" y="257.5" width="149.5" height="21"/>
+                                <rect key="frame" x="113" y="279.5" width="149.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -110,8 +110,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="top" restorationIdentifier="stackView" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
-                                <rect key="frame" x="40" y="144" width="295" height="468"/>
+                            <stackView opaque="NO" contentMode="top" restorationIdentifier="stackView" axis="vertical" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
+                                <rect key="frame" x="40" y="188" width="295" height="424"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-Bs-yEd">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
@@ -129,7 +129,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add player names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRx-ut-MPO">
-                                <rect key="frame" x="113" y="79" width="149" height="21"/>
+                                <rect key="frame" x="113" y="123" width="149" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1uh-lr-zA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="83"/>
+            <point key="canvasLocation" x="1709.5999999999999" y="82.3088455772114"/>
         </scene>
         <!--Game-->
         <scene sceneID="Fpe-Hv-7ll">
@@ -178,7 +178,4 @@
             <point key="canvasLocation" x="2616.8000000000002" y="95.802098950524751"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="2mb-AW-si3"/>
-    </inferredMetricsTieBreakers>
 </document>

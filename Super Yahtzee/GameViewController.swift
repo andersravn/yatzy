@@ -14,7 +14,7 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
     
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     
-    var playerNames = ["Anders", "Natalie", "Sille", "Emil"]
+    var playerNames: [String]!
     var board: Board!
     
     override func viewDidLoad() {
@@ -27,7 +27,12 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
         spreadsheetView.register(InfoCell.self, forCellWithReuseIdentifier: String(describing: InfoCell.self))
         spreadsheetView.register(PlayCell.self, forCellWithReuseIdentifier: String(describing: PlayCell.self))
         
-        self.board = Board(playerNames: ["Anders", "Natalie", "Sille", "Emil"])
+        self.board = Board(playerNames: playerNames)
+        
+        // Code to hide keyboard on tap.
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(GameViewController.didTapView))
+        self.view.addGestureRecognizer(tapRecognizer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +70,7 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
             }
             return cell
         }
+        
         // First column - skips the empty cell in the first row.
         if indexPath.column == 0 && indexPath.row > 0 {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: InfoCell.self), for: indexPath) as! InfoCell
@@ -75,6 +81,18 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
             return cell
         }
         
+        // Add values to max column.
+        if (indexPath.column == 1 && indexPath.row > 0) {
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PlayCell.self), for: indexPath) as! PlayCell
+            cell.label.text = self.board.maxColumn[indexPath.row - 1]
+            cell.label.font = cell.label.font.withSize(10.0)
+            if (indexPath.row % 2 != 0) {
+                cell.label.backgroundColor = UIColor(red:0.57, green:0.80, blue:0.64, alpha:0.4)
+            }
+            return cell
+        }
+        
+        // Adds TextFields to player columns.
         if (indexPath.column > 1 && indexPath.row > 0) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: PlayCell.self), for: indexPath) as! PlayCell
             cell.addSubview(board.playerColumns[indexPath.column - 2][indexPath.row - 1])
@@ -85,5 +103,10 @@ class GameViewController: UIViewController, SpreadsheetViewDataSource, Spreadshe
         } else {
             return nil
         }
+    }
+    
+    // Code to hide keyboard on tap.
+    @objc func didTapView(){
+        self.view.endEditing(true)
     }
 }
