@@ -24,7 +24,7 @@ class PlayersViewController: UIViewController {
         var i = 0
         while i < self.numberOfPlayers {
             let textField = createTextField(playerNumber: i)
-            playersInputContainer.insertArrangedSubview(textField, at: i)
+            playersInputContainer.addArrangedSubview(textField)
             playerNameTextFields.append(textField)
             i += 1
         }

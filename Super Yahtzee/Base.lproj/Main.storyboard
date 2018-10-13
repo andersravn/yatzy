@@ -110,9 +110,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="top" restorationIdentifier="stackView" axis="vertical" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
-                                <rect key="frame" x="40" y="188" width="295" height="424"/>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-Bs-yEd">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.46666666670000001" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,23 +126,27 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add player names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRx-ut-MPO">
-                                <rect key="frame" x="113" y="123" width="149" height="21"/>
+                                <rect key="frame" x="113" y="104" width="149" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="TopLeft" ambiguous="YES" restorationIdentifier="stackView" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Ap-zUH">
+                                <rect key="frame" x="40" y="185" width="295" height="282"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Cch-Bs-yEd" firstAttribute="top" secondItem="N6i-Ap-zUH" secondAttribute="bottom" id="7Yc-MM-jW6"/>
+                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="top" secondItem="oRx-ut-MPO" secondAttribute="bottom" constant="60" id="0TP-nB-shA"/>
+                            <constraint firstItem="oRx-ut-MPO" firstAttribute="centerX" secondItem="XJN-zD-U3v" secondAttribute="centerX" id="G1c-ag-Gfa"/>
                             <constraint firstItem="XJN-zD-U3v" firstAttribute="bottom" secondItem="Cch-Bs-yEd" secondAttribute="bottom" id="NYt-ey-hkX"/>
                             <constraint firstItem="Cch-Bs-yEd" firstAttribute="leading" secondItem="XJN-zD-U3v" secondAttribute="leading" id="R5t-Hf-Thl"/>
-                            <constraint firstItem="oRx-ut-MPO" firstAttribute="top" secondItem="XJN-zD-U3v" secondAttribute="top" constant="59" id="ULA-WB-zrw"/>
+                            <constraint firstItem="XJN-zD-U3v" firstAttribute="trailing" secondItem="N6i-Ap-zUH" secondAttribute="trailing" constant="40" id="RMh-ZH-v9i"/>
+                            <constraint firstItem="oRx-ut-MPO" firstAttribute="top" secondItem="XJN-zD-U3v" secondAttribute="top" constant="40" id="ULA-WB-zrw"/>
+                            <constraint firstItem="Cch-Bs-yEd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N6i-Ap-zUH" secondAttribute="bottom" priority="750" constant="138" id="V04-t5-SEr"/>
                             <constraint firstItem="XJN-zD-U3v" firstAttribute="trailing" secondItem="Cch-Bs-yEd" secondAttribute="trailing" id="X0Q-Sn-CTR"/>
-                            <constraint firstItem="XJN-zD-U3v" firstAttribute="trailing" secondItem="N6i-Ap-zUH" secondAttribute="trailing" constant="40" id="X5P-PX-BmK"/>
-                            <constraint firstItem="oRx-ut-MPO" firstAttribute="centerX" secondItem="XJN-zD-U3v" secondAttribute="centerX" id="hhP-gd-qpv"/>
-                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="top" secondItem="oRx-ut-MPO" secondAttribute="bottom" constant="44" id="tNx-ec-BZM"/>
-                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="leading" secondItem="XJN-zD-U3v" secondAttribute="leading" constant="40" id="ySA-FR-M69"/>
+                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="centerX" secondItem="XJN-zD-U3v" secondAttribute="centerX" id="mvG-mE-rXr"/>
+                            <constraint firstItem="N6i-Ap-zUH" firstAttribute="leading" secondItem="XJN-zD-U3v" secondAttribute="leading" constant="40" id="tae-NI-ccS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XJN-zD-U3v"/>
                     </view>
